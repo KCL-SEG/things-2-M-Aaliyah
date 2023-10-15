@@ -1,3 +1,9 @@
 """Forms of the project."""
+from django import forms
 
-# Create your forms here.
+from things.models import Thing
+
+class ThingForm(forms.ModelForm):
+    model = Thing
+    fields = ['name', 'description', 'quantity']
+    widgets = { 'description': forms.Textarea(), 'quantity': forms.NumberInput() }
